@@ -1,0 +1,37 @@
+# fly.toml app configuration file generated for gana-dinero-ai-bot on 2025-04-06T00:34:18-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'gana-dinero-ai-bot'
+primary_region = 'mia'
+
+[build]
+  builder = 'paketobuildpacks/builder:base'
+
+[deploy]
+  strategy = 'immediate'
+  release_command = 'python main.py'
+
+[env]
+  ADMIN_CHAT_ID = '2079478105'
+  TELEGRAM_TOKEN = '7718617934:AAFEZNv5x3FR_uA3xfjbZzU84WALkQqMgzQ'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+
+[[services]]
+  protocol = 'tcp'
+  internal_port = 8080
+
+  [[services.ports]]
+    port = 80
+    handlers = ['http']
+
+  [[services.ports]]
+    port = 443
+    handlers = ['http', 'tls']
+
+[[vm]]
+  size = 'shared-cpu-1x'

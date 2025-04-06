@@ -1,0 +1,9 @@
+# flyctl launch added from .gitignore
+# Ignorar archivos temporales
+**\*.__pycache__
+**\*.pyc
+**\*.env
+
+# Ignorar carpetas
+**\mi_entorno
+fly.toml
